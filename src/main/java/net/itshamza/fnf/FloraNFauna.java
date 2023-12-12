@@ -1,6 +1,9 @@
 package net.itshamza.fnf;
 
 import com.mojang.logging.LogUtils;
+import net.itshamza.fnf.entity.ModEntityCreator;
+import net.itshamza.fnf.item.ModCreativeModeTabs;
+import net.itshamza.fnf.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
@@ -42,6 +45,10 @@ public class FloraNFauna
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+
+        ModItems.register(modEventBus);
+        ModEntityCreator.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
